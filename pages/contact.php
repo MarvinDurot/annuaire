@@ -10,12 +10,24 @@ if (isset($_GET['login'])) {
     exit(0);
 }
 
-// Formulaire de modification soumis
-if (isset($_POST['login'])) {
+// Le formulaire de modification a été soumis
+if (isset($_POST['submit'])) {
+
+    if (isset($_FILES['photo'])) {
+        if ($_FILES['photo']['error'] > 0) {
+            $alert = new Alert(true, 'Erreur upload !');
+        }
+
+        $fname = 'img/' . $_POST['login'] . '.png';
+
+        if (move_uploaded_file($_FILES['photo']['tmp_name'], $fname)) {
+            $_POST['photo'] = $fname;
+        }
+    }
 
     // Mise à jour des informations en base
     $personne->sync($_POST);
-    $res = !$dao->update($personne);
+    $res = $dao->update($personne);
 
     // Création du message de feedback
     if ($res) {
@@ -62,28 +74,29 @@ if (isset($_POST['login'])) {
 
 <div class="container">
 
-    <div class="people" style="padding-top: 100px;">
+    <div class="contact" style="padding-top: 100px;">
         <div class="row">
             <div class="col-md-6">
-                <p><?php if (isset($error)) echo $alert; ?></p>
+                <p><?php if (isset($alert)) echo $alert; ?></p>
 
                 <?php
                 if (Auth::getUser() === 'admin' || Auth::getUser() === $personne->login) {
                     $form = new BootstrapForm($personne->getFields());
                     echo '<legend>Editer la personne</legend>';
-                    echo '<form action="#" method="POST" role="form">';
+                    echo '<form action="#" method="POST" role="form" enctype="multipart/form-data">';
                     echo $form->hidden('login');
                     echo $form->input('nom');
                     echo $form->input('prenom');
                     echo $form->input('telephone');
                     echo $form->input('bureau');
                     echo $form->input('commentaire');
+                    echo $form->upload('photo', 'Changer de photo :');
                     echo $form->submit();
                     echo '</form>';
                 } else {
                     $card = new BootstrapCard($personne->getFields());
                     echo $card->thumbnail($personne->getPhoto());
-                    echo $card->link($personne->getURL(), 'Lien Intranet');
+                    echo $card->link($personne->getURL(), 'Intranet');
                     echo $card->link($personne->getMailTo(), 'Contacter');
                     echo '<legend>Informations</legend>';
                     echo $card->field('nom', 'Nom : ');

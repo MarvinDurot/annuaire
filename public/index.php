@@ -3,7 +3,7 @@ session_start();
 
 // Chargement automatique des classes
 function __autoload($class) {
-    require_once "../app/class/$class.php";
+    require_once "../app/classes/$class.php";
 }
 
 // Initialisation des objets

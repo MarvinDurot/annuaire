@@ -24,16 +24,17 @@ class PersonneDAO
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Personne');
     }
 
-    // Mise à jour de l'objet dans la base
+    // Mise ï¿½ jour de l'objet dans la base
     public function update($obj)
     {
-        $stmt = $this->pdo->prepare('UPDATE annuaire SET nom=:nom, prenom=:prenom, telephone=:telephone, bureau=:bureau WHERE login=:login');
+        $stmt = $this->pdo->prepare('UPDATE annuaire SET nom=:nom, prenom=:prenom, telephone=:telephone, bureau=:bureau, photo=:photo WHERE login=:login');
         $res = $stmt->execute(
             array(
                 'nom' => $obj->nom,
                 'prenom' => $obj->prenom,
                 'telephone' => $obj->telephone,
                 'bureau' => $obj->bureau,
+                'photo' => $obj->photo,
                 'login' => $obj->login
             )
         );

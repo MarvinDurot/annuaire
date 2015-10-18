@@ -23,7 +23,7 @@ class Card
 
     public function field($name, $label = '')
     {
-        return $this->surround($label . $this->getValue($name));
+        return $this->surround("<label>$label</label> $this->getValue($name)");
     }
 
     public function thumbnail($url)

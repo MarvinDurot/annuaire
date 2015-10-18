@@ -4,6 +4,7 @@ if (!Auth::isLogged()) header('Location: index.php?p=login');
 
 // Valeur par défaut pour la recherche par nom
 $nom = isset($_GET['nom']) ? $_GET['nom'] : '';
+
 // Récupération des personnes en fonction du nom
 $personnes = $dao->getAll($nom);
 ?>
@@ -35,7 +36,7 @@ $personnes = $dao->getAll($nom);
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
-            <form action="../public/index.php?p=home" method="GET" role="search" class="navbar-form navbar-left">
+            <form action="#" method="GET" role="search" class="navbar-form navbar-left">
                 <div class="form-group">
                     <input type="text" placeholder="Recherche" class="form-control" name="nom" value="<?php echo $nom; ?>">
                 </div>

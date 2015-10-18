@@ -15,10 +15,10 @@ class BootstrapForm extends Form
         );
     }
 
-    public function submit()
+    public function submit($name = 'submit')
     {
         return $this->surround(
-            '<button type="submit" class="btn btn-primary pull-right">Sauvegarder</button>'
+            '<button type="submit" name="' . $name . '" class="btn btn-primary pull-right">Sauvegarder</button>'
         );
     }
 
