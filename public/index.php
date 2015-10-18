@@ -10,7 +10,7 @@ function __autoload($class) {
 $db = Database::getInstance();
 $dao = new PersonneDAO($db);
 
-// Récupération de la page
+// RÃ©cupÃ©ration de la page
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } else {
