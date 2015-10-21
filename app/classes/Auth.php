@@ -28,7 +28,7 @@ class Auth
         return isset($_SESSION['login']);
     }
 
-    public function getUser() {
+    public static function getUser() {
         return $_SESSION['login'];
     }
 }
