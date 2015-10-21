@@ -1,13 +1,17 @@
 <?php
 
 /**
- * Classe Database
+ * Class Database
+ * Singleton de connexion à la base de données
  */
 class Database
 {
     static private $pdo = null; // Le singleton
 
-    // Obenir le singleton
+    /**
+     * Retourne l'objet PDO de la base
+     * @return null|PDO
+     */
     static function getInstance()
     {
         if (self::$pdo == null) {

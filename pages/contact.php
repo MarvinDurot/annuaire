@@ -12,15 +12,17 @@ if (isset($_GET['login'])) {
 
 // Le formulaire de modification a été soumis
 if (isset($_POST['submit'])) {
-
+    // Si fichier transmis
     if (isset($_FILES['photo'])) {
+        // On vérifie qu'il n'y a pas eu d'erreur
         if ($_FILES['photo']['error'] > 0) {
             $alert = new Alert(true, 'Erreur upload !');
         }
-
+        // Génération du nom du fichier
         $fname = 'img/' . $_POST['login'] . '.png';
-
+        // On déplace le fichier dans le dossier des images
         if (move_uploaded_file($_FILES['photo']['tmp_name'], $fname)) {
+            // Si tout s'est bien passé on met à jour le lien
             $_POST['photo'] = $fname;
         }
     }
@@ -29,7 +31,7 @@ if (isset($_POST['submit'])) {
     $personne->sync($_POST);
     $res = $dao->update($personne);
 
-    // Création du message de feedback
+    // Création du message de feedback selon le résultat précédent
     if ($res) {
         $alert = new Alert(false, 'Les informations de la personne a bien été modifiées !');
     } else {
@@ -80,7 +82,9 @@ if (isset($_POST['submit'])) {
                 <p><?php if (isset($alert)) echo $alert; ?></p>
 
                 <?php
+                // Si admin connecté ou utilisateur du profil connecté
                 if (Auth::getUser() === 'admin' || Auth::getUser() === $personne->login) {
+                    // Création et affichage du formulaire
                     $form = new BootstrapForm($personne->getFields());
                     echo '<legend>Editer la personne</legend>';
                     echo '<form action="#" method="POST" role="form" enctype="multipart/form-data">';
@@ -94,6 +98,7 @@ if (isset($_POST['submit'])) {
                     echo $form->submit();
                     echo '</form>';
                 } else {
+                    // Création et affichage de la carte de visite
                     $card = new BootstrapCard($personne->getFields());
                     echo $card->thumbnail($personne->getPhoto());
                     echo $card->link($personne->getURL(), 'Intranet');

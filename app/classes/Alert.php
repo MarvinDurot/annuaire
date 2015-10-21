@@ -1,8 +1,14 @@
 <?php
 
+/**
+ * Class Alert
+ * Affiche des messages d'alerte
+ */
 class Alert
 {
+    // Indique si il s'agit d'une erreur
     private $error;
+    // Message à afficher
     private $message;
 
     public function __construct($error, $message)
@@ -11,6 +17,10 @@ class Alert
         $this->message = $message;
     }
 
+    /**
+     * Redéfinition du toString
+     * @return string
+     */
     public function __toString()
     {
         if ($this->error) {

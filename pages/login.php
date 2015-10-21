@@ -6,7 +6,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
             header('Location: index.php');
             exit(0);
         } else {
-            $alert = new Alert(1, 'Le login ou le mot de passe n\'est pas correct.');
+            $alert = new Alert(1, 'Login ou mot de passe invalide !');
         }
     }
 ?>
@@ -37,12 +37,12 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     <form action="#" method="POST" class="form-signin">
         <h2 class="form-signin-heading">Connexion</h2>
         <label for="login" class="sr-only">Login</label>
-        <input type="text" name="login" class="form-control" placeholder="Login" required autofocus>
+        <input type="text" name="login" value="<?php echo $_POST['login']; ?>" class="form-control" placeholder="Login" required autofocus>
         <label for="password" class="sr-only">Mot de passe</label>
         <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
+        <p><?php if (isset($alert)) echo $alert; ?></p>
     </form>
-    <p><?php if (isset($alert)) echo $alert; ?></p>
 
 </div>
 

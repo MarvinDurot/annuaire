@@ -34,19 +34,17 @@ $personnes = $dao->getAll($nom);
         <div class="navbar-header">
             <a class="navbar-brand" href="index.php">Annuaire</a>
         </div>
-
         <div id="navbar" class="navbar-collapse collapse">
             <form action="#" method="GET" role="search" class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" placeholder="Recherche" class="form-control" name="nom" value="<?php echo $nom; ?>">
+                <div class="form-group has-feedback">
+                    <input type="text" placeholder="Recherche" class="form-control" name="nom"
+                           value="<?php echo $nom; ?>" autofocus>
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
                 </div>
-                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
             </form>
-            <div class="navbar-right">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php?p=logout">Se déconnecter</a></li>
-                </ul>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="index.php?p=logout">Se déconnecter</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -65,13 +63,16 @@ $personnes = $dao->getAll($nom);
             </thead>
             <tbody>
             <?php
-                if (empty($personnes)) {
-                    echo '<tr><td colspan="4">Aucun résultat !</td></tr>';
-                } else {
-                    foreach($personnes as $personne) {
-                        $personne->toTableRow();
-                    }
+            // Si aucun résultats
+            if (empty($personnes)) {
+                echo '<tr><td colspan="4">Aucun résultat !</td></tr>';
+            } else {
+                // Parcours des personnes trouvées
+                foreach ($personnes as $personne) {
+                    // Affichage de la ligne correspondante
+                    echo $personne->toTableRow();
                 }
+            }
             ?>
             </tbody>
         </table>
