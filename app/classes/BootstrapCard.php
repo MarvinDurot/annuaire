@@ -24,7 +24,7 @@ class BootstrapCard extends Card
      */
     public function thumbnail($url)
     {
-        return '<img src="' . $url . '" class="img-circle pull-right" width="200px"></img>';
+        return '<img src="' . $url . '" class="img-circle pull-right" width="250px"></img>';
     }
 
     /**

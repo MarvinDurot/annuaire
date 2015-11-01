@@ -17,16 +17,18 @@ if (isset($_GET['p'])) {
     $p = 'home';
 }
 
-// Routage des pages
-if ($p === 'home') {
-    require('../pages/home.php');
-} else if ($p === 'login') {
-    require('../pages/login.php');
-} else if ($p === 'contact') {
-    require('../pages/contact.php');
-} else if ($p === 'logout') {
-    Auth::logout();
-    require('../pages/login.php');
+// Routage simple des pages
+if (Auth::isLogged()) {
+	if ($p === 'home') {
+    	require('../pages/home.php');
+	} else if ($p === 'contact') {
+    	require('../pages/contact.php');
+	} else if ($p === 'logout') {
+    	Auth::logout();
+    	require('../pages/login.php');
+	}
+} else {
+	require('../pages/login.php');
 }
 
 ?>

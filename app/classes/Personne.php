@@ -52,11 +52,17 @@ class Personne
         return get_object_vars($this);
     }
 
+    public function test()
+    {
+        echo 'test';
+    }
+
     /**
-     * Synchronise les champs de l'utilisateur
+     * Met à jour les champs de l'utilisateur
      * @param $attributes : champs
      */
-    public function sync($attributes) {
+    public function update($attributes) 
+    {
         foreach($this->getFields() as $key => $field) {
             if (isset($attributes[$key])) {
                 $this->$key = $attributes[$key];

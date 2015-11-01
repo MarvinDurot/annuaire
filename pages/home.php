@@ -1,6 +1,4 @@
 <?php
-// Accessible uniquement aux uitlisateurs connectés
-if (!Auth::isLogged()) header('Location: index.php?p=login');
 
 // Valeur par défaut pour la recherche par nom
 $nom = isset($_GET['nom']) ? $_GET['nom'] : '';

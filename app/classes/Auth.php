@@ -14,7 +14,7 @@ class Auth
      */
     public static function login($login, $password)
     {
-        if ($login === 'admin' && $password !== 'admin') {
+        if ($login === Config::get('admin.username') && $password !== Config::get('admin.password')) {
             return false;
         }
 
