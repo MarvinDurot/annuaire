@@ -35,7 +35,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
 <div class="container">
 
     <form action="#" method="POST" class="form-signin">
-        <h2 class="form-signin-heading">Connexion</h2>
+        <h2 class="form-signin-heading text-center">Connexion</h2>
         <label for="login" class="sr-only">Login</label>
         <input type="text" name="login" value="<?php if (isset($_POST['login'])) echo $_POST['login']; ?>" class="form-control" placeholder="Login" required autofocus>
         <label for="password" class="sr-only">Mot de passe</label>
