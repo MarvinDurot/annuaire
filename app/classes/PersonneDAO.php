@@ -15,7 +15,7 @@ class PersonneDAO extends DAO
      * @param $nom : motif du nom
      * @return mixed
      */
-    public function getAll($nom)
+    public function getAllByNom($nom)
     {
         $stmt = $this->pdo->query('SELECT * FROM ' . $this->table . ' WHERE nom LIKE "' . $nom . '%" ');
         return $stmt->fetchAll(PDO::FETCH_CLASS, $this->class);

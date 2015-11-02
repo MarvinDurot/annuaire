@@ -4,7 +4,7 @@
 $nom = isset($_GET['nom']) ? $_GET['nom'] : '';
 
 // Récupération des personnes en fonction du nom
-$personnes = $dao->getAll($nom);
+$personnes = $dao->getAllByNom($nom);
 ?>
 
 <!DOCTYPE html>
