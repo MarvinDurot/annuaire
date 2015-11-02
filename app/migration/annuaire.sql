@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
--- Client :  127.0.0.1
--- Généré le :  Dim 18 Octobre 2015 à 11:52
--- Version du serveur :  5.6.26
--- Version de PHP :  5.6.12
+-- Client :  localhost
+-- Généré le :  Dim 01 Novembre 2015 à 22:01
+-- Version du serveur :  10.0.20-MariaDB
+-- Version de PHP :  5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `test`
+-- Base de données :  `annuaire`
 --
 
 -- --------------------------------------------------------
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Structure de la table `annuaire`
 --
 
-CREATE TABLE IF NOT EXISTS `annuaire` (
+CREATE TABLE `annuaire` (
   `login` varchar(8) NOT NULL DEFAULT '',
   `nom` varchar(32) DEFAULT NULL,
   `prenom` varchar(32) DEFAULT NULL,
@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `annuaire` (
 -- Contenu de la table `annuaire`
 --
 
-INSERT INTO `annuaire` (`login`, `nom`, `prenom`, `commentaire`, `bureau`, `telephone`, `courriel`, `photo`) VALUES
-('ageronb', 'AGERON', 'Blandine', 'Responsable LP Logistique', '822', 'B 006', 'Blandine.Ageron@iut-valence.fr', ''),
+INSERT INTO `annuaire` (`login`, `nom`, `prenom`, `commentaire`, `telephone`, `bureau`, `courriel`, `photo`) VALUES
+('ageronb', 'AGERON', 'Blandine', 'Responsable LP Logistique', '900', 'B 006', 'Blandine.Ageron@iut-valence.fr', ''),
 ('amblamar', 'AMBLARD', 'Marion', 'INFO', '865', 'C 105', 'Marion.Amblard@iut-valence.fr', ''),
 ('anselinv', 'ANSELIN', 'Véronique', 'GEA', '823', 'B 015', 'Veronique.Anselin@iut-valence.fr', ''),
 ('arouim', 'AROUI', 'Mounir', 'GEA', '874', 'C 002', 'Mounir.Aroui@iut-valence.fr', ''),
