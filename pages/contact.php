@@ -16,11 +16,16 @@ if (isset($_POST['submit'])) {
         // On vérifie qu'il n'y a pas eu d'erreur
         if ($_FILES['photo']['error'] == 0) {
             // Génération du nom du fichier
-            $fname = 'img/' . $_POST['login'] . '.png';
-            // On déplace le fichier dans le dossier des images
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $fname)) {
-                // Si tout s'est bien passé on met à jour le lien
-                $_POST['photo'] = $fname;
+            $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+            // Vérification de l'extension
+            if (in_array($ext, ['png', 'jpg', 'gif'])) {
+                // Génération du nom
+                $fname = 'img/' . $_POST['login'] . '.' . $ext;
+                // On déplace le fichier dans le dossier des images
+                if (move_uploaded_file($_FILES['photo']['tmp_name'], $fname)) {
+                    // Si tout s'est bien passé on met à jour le lien
+                    $_POST['photo'] = $fname;
+                }
             }
         }
     }
