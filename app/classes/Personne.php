@@ -52,11 +52,6 @@ class Personne
         return get_object_vars($this);
     }
 
-    public function test()
-    {
-        echo 'test';
-    }
-
     /**
      * Met à jour les champs de l'utilisateur
      * @param $attributes : champs

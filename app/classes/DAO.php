@@ -48,12 +48,13 @@ abstract class DAO
      * Sauvegarde un enregistrement en base
      * @param $obj
      * @return bool
+     * @throws Exception
      */
     public function save($obj)
     {
         // On teste la classe de l'objet passé en param
         if (!$obj instanceof $this->class)
-            return Exception('Invalid object class!');
+            throw new Exception('Invalid object class!');
 
         $params = [];
         $binds = [];
@@ -77,7 +78,7 @@ abstract class DAO
 
     /**
      * Supprime un enregistrement en base
-     * @param $obj
+     * @param int $id
      * @return bool
      */
     public function delete($id)

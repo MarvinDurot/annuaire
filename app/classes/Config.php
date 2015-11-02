@@ -4,18 +4,19 @@
  * Class Config
  * Gère les configurations de l'application
  */
-class Config {
+class Config
+{
 
     /**
-     * Tous les éléments de du fichier de config chargé     
+     * Tous les éléments de du fichier de config chargé
      * @var array
      */
     public static $items = [];
 
     /**
-     * Charge un fichier de configuration     
-     * @param   string  $filepath
-     * @return  void
+     * Charge un fichier de configuration
+     * @param string $filepath
+     * @return void
      */
     public static function load($filepath)
     {
@@ -23,9 +24,9 @@ class Config {
     }
 
     /**
-     * Cherche un élément dans les fichiers de config     
-     * @param   string  $item
-     * @return  string
+     * Cherche un élément dans les fichiers de config
+     * @param string $key
+     * @return string
      */
     public static function get($key = null)
     {
@@ -36,12 +37,11 @@ class Config {
 
         static::load($filepath);
 
-        if ( ! empty($key))
-        {
+        if (!empty($key)) {
             return static::$items[$key];
         }
 
         return static::$items;
     }
-    
+
 }
