@@ -9,7 +9,7 @@ if (isset($_GET['login'])) {
 }
 
 // Le formulaire de modification a été soumis
-if (isset($_POST['submit'])) {    
+if (isset($_POST['submit'])) {
 
     // Si fichier transmis
     if (isset($_FILES['photo'])) {
@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             $fname = 'img/' . $_POST['login'] . '.png';
             // On déplace le fichier dans le dossier des images
             if (move_uploaded_file($_FILES['photo']['tmp_name'], $fname)) {
-            // Si tout s'est bien passé on met à jour le lien
+                // Si tout s'est bien passé on met à jour le lien
                 $_POST['photo'] = $fname;
             }
         }
@@ -50,6 +50,9 @@ if (isset($_POST['submit'])) {
 
     <title>Annuaire</title>
 
+    <!-- Custom styles for this template -->
+    <link href="../public/css/contact.css" rel="stylesheet">
+
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
@@ -57,63 +60,38 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.php">Annuaire</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <div class="navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.php?p=logout">Se déconnecter</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
-
-        <div class="contact" style="padding-top: 100px;">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><?php if (isset($alert)) echo $alert; ?></p>
-
-                    <?php
-                // Si admin connecté ou utilisateur du profil connecté
-                    if (Auth::getUser() === 'admin' || Auth::getUser() === $personne->login) {
-                    // Création et affichage du formulaire
-                        $form = new BootstrapForm($personne->getFields());
-                        echo '<legend>Editer la personne</legend>';
-                        echo '<form action="#" method="POST" role="form" enctype="multipart/form-data">';
-                        echo $form->hidden('login');
-                        echo $form->input('nom');
-                        echo $form->input('prenom');
-                        echo $form->input('telephone');
-                        echo $form->input('bureau');
-                        echo $form->input('commentaire');
-                        echo $form->upload('photo', 'Changer de photo :');
-                        echo $form->submit();
-                        echo '</form>';
-                    } else {
-                    // Création et affichage de la carte de visite
-                        $card = new BootstrapCard($personne->getFields());
-                        echo $card->thumbnail($personne->getPhoto());
-                        echo $card->link($personne->getURL(), 'Intranet');
-                        echo $card->link($personne->getMailTo(), 'Contacter');
-                        echo '<legend>Informations</legend>';
-                        echo $card->field('nom', 'Nom : ');
-                        echo $card->field('prenom', 'Prénom : ');
-                        echo $card->field('telephone', 'Téléphone : ');
-                        echo $card->field('bureau', 'Bureau : ');
-                        echo $card->field('commentaire', 'Commentaire : ');
-                    }
-                    ?>
-                </div>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.php">Annuaire</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="navbar-right">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.php?p=logout">Se déconnecter</a></li>
+                </ul>
             </div>
         </div>
-
     </div>
+</nav>
+
+<div class="container">
+    <div class="contact">
+        <div class="row">
+            <div class="col-md-8">
+                <p><?php if (isset($alert)) echo $alert; ?></p>
+            </div>
+        </div>
+        <?php
+            // Si admin connecté ou utilisateur du profil connecté
+            if (Auth::getUser() === 'admin' || Auth::getUser() === $personne->login) {
+                require('partials/form.php');
+            } else {
+                require('partials/card.php');
+            }
+        ?>
+    </div>
+</div>
 
 </body>
 </html>
