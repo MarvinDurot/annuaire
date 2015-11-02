@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.0.2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Dim 01 Novembre 2015 à 22:01
--- Version du serveur :  10.0.20-MariaDB
--- Version de PHP :  5.6.14
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de données :  `annuaire`
 --
@@ -147,15 +129,7 @@ INSERT INTO `annuaire` (`login`, `nom`, `prenom`, `commentaire`, `telephone`, `b
 ('zouarido', 'ZOUARI', 'Dorsaf', 'GEA', '822', 'B 006', 'Dorsaf.Zouari@iut-valence.fr', '');
 
 --
--- Index pour les tables exportées
---
-
---
 -- Index pour la table `annuaire`
 --
 ALTER TABLE `annuaire`
   ADD PRIMARY KEY (`login`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
