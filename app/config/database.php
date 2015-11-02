@@ -1,8 +1,8 @@
 <?php
 
 return array(
-    'host' => 'localhost',
-    'username' => 'root',
-    'password' => 'root',
+    'host' => 'gigondas',
+    'username' => 'durotm',
+    'password' => 'durotm',
     'database' => 'durotm'
 );
