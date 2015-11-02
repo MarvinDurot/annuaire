@@ -1,0 +1,36 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.contact {
+    padding-top: 50px;
+}
+
+.contact h2 {
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    padding-bottom: 0.3em;
+}
+
+.contact dl {
+    padding: 0.5em;
+}
+
+.contact dt {
+    float: left;
+    clear: left;
+    text-align: left;
+    font-weight: bold;
+}
+
+.contact dt:after {
+    content: " :";
+}
+
+.contact dd {
+    margin: 0 0 0 120px;
+    padding: 0 0 0.5em 0;
+}
