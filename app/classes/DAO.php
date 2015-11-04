@@ -83,7 +83,7 @@ abstract class DAO
      */
     public function delete($id)
     {
-        $stmt = $this->pdo->prepare('DELETE FROM $this->table WHERE $this->key=:id');
-        return $stmt->execute([$id]);        
+        $stmt = $this->pdo->prepare("DELETE FROM $this->table WHERE $this->key=:id");
+        return $stmt->execute([$id]);
     }
 }
